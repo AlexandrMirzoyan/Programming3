@@ -3,14 +3,14 @@ var xotakerArr = [];
 var gishatichArr = [];
 var shunArr = [];
 var mardArr = [];
-var n = 60;
-var m = 60;
+var n = 40;
+var m = 40;
 var side = 15;
 
 var matrix = [];
 
 function setup() {
-    frameRate(5);
+    frameRate(10);
 
     for (var a = 0; a < m; a++) {
         matrix[a] = [];
@@ -30,7 +30,7 @@ function setup() {
         for (var x = 0; x < matrix[y].length; ++x) {
 
             if (matrix[y][x] == 1) {
-                var gr = new Grass(x, y, 1);
+                var gr = new Grass(x, y);
                 grassArr.push(gr);
             }
 
@@ -39,20 +39,20 @@ function setup() {
                 xotakerArr.push(xotker);
             }
 
-            /*if (matrix[y][x] == 3) {
-                //var gishatich = new Gishatich(x, y);
-                //gishatichArr.push(gishatich);
-            }*/
+            if (matrix[y][x] == 3) {
+                var gishatich = new Gishatich(x, y);
+                gishatichArr.push(gishatich);
+            }
 
-            /*if (matrix[y][x] == 4) {
-                //var shun = new Shun(x, y);
-                //shunArr.push(shun);
-            }*/
+            if (matrix[y][x] == 4) {
+                var shun = new Shun(x, y);
+                shunArr.push(shun);
+            }
 
-            /*if (matrix[y][x] == 5) {
-                //var mard = new Mard(x, y);
-                //mardArr.push(mard);
-            }*/
+            if (matrix[y][x] == 5) {
+                var mard = new Mard(x, y);
+                mardArr.push(mard);
+            }
 
         }
 
@@ -76,7 +76,7 @@ function draw() {
                 rect(x * side, y * side, side, side);
             }
 
-            /*else if (matrix[y][x] == 3) {
+            else if (matrix[y][x] == 3) {
                 fill("black");
                 rect(x * side, y * side, side, side);
             }
@@ -89,7 +89,7 @@ function draw() {
             else if (matrix[y][x] == 5) {
                 fill("#F6E5C7");
                 rect(x * side, y * side, side, side);
-            }*/
+            }
 
         }
     }
@@ -104,7 +104,7 @@ function draw() {
         xotakerArr[i].mah();
     }
 
-    /*for (var i in gishatichArr) {
+    for (var i in gishatichArr) {
         gishatichArr[i].sharjvel();
         gishatichArr[i].utel();
         gishatichArr[i].mah();
@@ -118,7 +118,7 @@ function draw() {
 
     for (var i in mardArr) {
         mardArr[i].walk();
-    }*/
+    }
 
 
 }

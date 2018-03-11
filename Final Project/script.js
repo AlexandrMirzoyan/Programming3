@@ -3,8 +3,8 @@ var xotakerArr = [];
 var gishatichArr = [];
 var shunArr = [];
 var mardArr = [];
-var n = 60;
-var m = 60;
+var n = 40;
+var m = 40;
 var side = 15;
 
 var matrix = [];
@@ -30,7 +30,7 @@ function setup() {
         for (var x = 0; x < matrix[y].length; ++x) {
 
             if (matrix[y][x] == 1) {
-                var gr = new Grass(x, y);
+                var gr = new Grass(x, y, 1);
                 grassArr.push(gr);
             }
 
@@ -102,12 +102,14 @@ function draw() {
         xotakerArr[i].sharjvel();
         xotakerArr[i].utel();
         xotakerArr[i].mah();
+        //xotakerArr[i].stanalNorKordinatner();
     }
 
     for (var i in gishatichArr) {
         gishatichArr[i].sharjvel();
         gishatichArr[i].utel();
         gishatichArr[i].mah();
+        //gishatichArr[i].stanalNorKordinatner();
     }
 
     for (var i in shunArr) {

@@ -1,8 +1,19 @@
-class Xotaker extends KendaniEak {
-    constructor(x, y, index) {
-        super(x, y, index);
-        this.tariq = 0;
+class Shun extends KendaniEak{
+    constructor(x, y) {
+        super(x, y);
+        this.directions = [
+            [this.x - 1, this.y - 1],
+            [this.x, this.y - 1],
+            [this.x + 1, this.y - 1],
+            [this.x - 1, this.y],
+            [this.x + 1, this.y],
+            [this.x - 1, this.y + 1],
+            [this.x, this.y + 1],
+            [this.x + 1, this.y + 1]
+        ];
+        this.index = 4;
     }
+
     stanalNorKordinatner() {
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -15,12 +26,6 @@ class Xotaker extends KendaniEak {
             [this.x + 1, this.y + 1]
         ];
     }
-    yntrelVandak(ch) {
-        this.stanalNorKordinatner();
-        return super.yntrelVandak(ch);
-    }
-
-    // utel, bazmanal, sharjvel, mahanal
 
     sharjvel() {
 
@@ -32,7 +37,7 @@ class Xotaker extends KendaniEak {
             this.x = norVandak[0];
             this.y = norVandak[1];
 
-            matrix[this.y][this.x] = 2;
+            matrix[this.y][this.x] = 4;
 
         }
 
@@ -40,8 +45,7 @@ class Xotaker extends KendaniEak {
 
     utel() {
 
-        var norVandak = random(this.yntrelVandak(1));
-        this.multiply++;
+        var norVandak = random(this.yntrelVandak(3));
 
         if (norVandak && this.multiply >= 2) {
 
@@ -51,10 +55,10 @@ class Xotaker extends KendaniEak {
             this.y = norVandak[1];
             this.energy++;
 
-            for (var j in grassArr) {
-                if (norVandak[0] == grassArr[j].x && norVandak[1] == grassArr[j].y) {
+            for (var j in gishatichArr) {
+                if (norVandak[0] == gishatichArr[j].x && norVandak[1] == gishatichArr[j].y) {
                     this.multiply = 0;
-                    grassArr.splice(j, 1);
+                    gishatichArr.splice(j, 1);
                     break;
                 }
             }
@@ -65,13 +69,14 @@ class Xotaker extends KendaniEak {
     mah() {
         if (this.energy <= 0) {
             matrix[this.y][this.x] = 0;
-            for (var j in xotakerArr) {
-                if (this.x == xotakerArr[j].x && this.y == xotakerArr[j].y) {
-                    xotakerArr.splice(j, 1);
+            for (var j in mardArr) {
+                if (this.x == mardArr[j].x && this.y == mardArr[j].y) {
+                    mardArr.splice(j, 1);
                     break;
                 }
             }
         }
     }
+
 
 }
