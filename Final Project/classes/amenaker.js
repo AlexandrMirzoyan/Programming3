@@ -1,10 +1,11 @@
-class Mard extends KendaniEak{
-    constructor(x, y) {
+class Amenaker extends KendaniEak{
+    constructor(x, y, index) {
         super(x, y);
         this.multiply = 0;
-        this.energy = 10;
+        this.energy = 20;
         this.speed = Math.round(random(0, 2));
         this.speed2 = this.speed += 1;
+        this.index = 6;
     }
 
     stanalNorKordinatner() {
@@ -40,7 +41,8 @@ class Mard extends KendaniEak{
 
 
     sharjvel_utel_mahanal() {
-        var find = random(this.yntrelVandak(2, 3, 4));
+        console.log("HI");
+        /*var find = random(this.yntrelVandak(2, 3, 4));
         var chooseSquare = random(this.yntrelVandak(0, 1));
         this.multiply++;
         if (find) {
@@ -71,6 +73,15 @@ class Mard extends KendaniEak{
                     }
                 }
 
+                else if (matrix[find[1]][find[0]] = 5) {
+                    for (var k in mardArr) {
+                        if (find[0] == mardArr[k].x && find[1] == mardArr[k].y) {
+                            mardArr.splice(k, 1);
+                            break;
+                        }
+                    }
+                }
+
                 matrix[find[1]][find[0]] = 5;
                 matrix[this.y][this.x] = 0;
                 this.x = find[0];
@@ -87,7 +98,7 @@ class Mard extends KendaniEak{
             this.y = chooseSquare[1];
             this.multiply = 0;
 
-        }
+        }*/
     }
 
 }

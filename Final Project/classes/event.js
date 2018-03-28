@@ -1,8 +1,8 @@
-class KendaniEak {
+class Bomb {
     constructor(x, y, index) {
         this.x = x;
         this.y = y;
-        this.index = index;
+        this.index = 7;
         this.multiply = 0;
         this.directions = [
             [this.x - 1, this.y - 1],
@@ -30,4 +30,7 @@ class KendaniEak {
         return found;
     }
 
+    boom() {
+        console.log("hello");    
+    }
 }

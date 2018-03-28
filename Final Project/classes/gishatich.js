@@ -1,7 +1,6 @@
 class Gishatich extends KendaniEak{
     constructor(x, y) {
         super(x, y);
-        //this.multiply = 1;
         this.energy = 2;
         this.directions = [
             [this.x - 1, this.y - 1],

@@ -3,6 +3,14 @@ var xotakerArr = [];
 var gishatichArr = [];
 var shunArr = [];
 var mardArr = [];
+var amenakerArr = [];
+var bombArr = [];
+
+var winterArr = [];
+var springArr = [];
+var summerArr = [];
+var autumnArr = [];
+
 var n = 40;
 var m = 40;
 var side = 15;
@@ -10,6 +18,7 @@ var side = 15;
 var matrix = [];
 
 function setup() {
+
     frameRate(5);
 
     for (var a = 0; a < m; a++) {
@@ -54,6 +63,16 @@ function setup() {
                 mardArr.push(mard);
             }
 
+            if(matrix[y][x] == 6) {
+                var amenaker = new Amenaker(x, y);
+                amenakerArr.push(amenaker);
+            }
+
+            if(matrix[y][x] == 7) {
+                var bomb = new Bomb(x, y);
+                bombArr.push(bomb);
+            }
+
         }
 
     }
@@ -61,6 +80,7 @@ function setup() {
 }
 
 function draw() {
+
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 1) {
@@ -77,7 +97,7 @@ function draw() {
             }
 
             else if (matrix[y][x] == 3) {
-                fill("black");
+                fill("#544978");
                 rect(x * side, y * side, side, side);
             }
 
@@ -88,6 +108,11 @@ function draw() {
 
             else if (matrix[y][x] == 5) {
                 fill("#F6E5C7");
+                rect(x * side, y * side, side, side);
+            }
+
+            else if (matrix[y][x] == 6){
+                fill("#D1FF00");
                 rect(x * side, y * side, side, side);
             }
 
@@ -102,14 +127,12 @@ function draw() {
         xotakerArr[i].sharjvel();
         xotakerArr[i].utel();
         xotakerArr[i].mah();
-        //xotakerArr[i].stanalNorKordinatner();
     }
 
     for (var i in gishatichArr) {
         gishatichArr[i].sharjvel();
         gishatichArr[i].utel();
         gishatichArr[i].mah();
-        //gishatichArr[i].stanalNorKordinatner();
     }
 
     for (var i in shunArr) {
@@ -119,9 +142,28 @@ function draw() {
     }
 
     for (var i in mardArr) {
-        mardArr[i].walk();
+        mardArr[i].sharjvel_utel_mahanal();
     }
 
+    for (var i in amenakerArr) {
+        amenakerArr[i].sharjvel_utel_mahanal();
+    }
 
+    for (var i in bombArr) {
+        bombArr[i].boom();
+    }
+    
+    /*
+    //-> Hamarya ashxatox
+    function weather () {
+        setInterval(function winter (){ this.energy /= 2; console.log("winter") }, 0);
+        setInterval(function spring (){ this.energy = 4; console.log("spring") }, 3000);
+        setInterval(function summer (){ this.energy *= 2; console.log("summer") }, 6000);
+        setInterval(function autumn (){ this.energy /= 1.5; console.log("autumn") }, 9000);
+    }
+
+    weather();
+    */
+    
 }
 
