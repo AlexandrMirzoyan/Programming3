@@ -78,5 +78,28 @@ class Shun extends KendaniEak{
         }
     }
 
+    bazmanal () {
+
+        this.index = 4.5;
+
+        if (this.index % 2 == 0)  {
+            this.index = "igakan"
+        }
+
+        this.multiply++;
+        var emptyCells = this.yntrelVandak(0);
+        var newCell = random(emptyCells);
+ 
+        if(newCell && this.multiply >= 8){
+            var newX = newCell[0];
+            var newY = newCell[1];
+            matrix[newY][newX] = this.index;
+ 
+            var newShun = new Shun(newX, newY, this.index);
+            shunArr.push(newShun);
+            this.multiply = 0;
+        }
+    }
+
 
 }

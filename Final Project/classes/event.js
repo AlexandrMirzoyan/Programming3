@@ -1,9 +1,7 @@
 class Bomb {
-    constructor(x, y, index) {
+    constructor(x, y) {
         this.x = x;
         this.y = y;
-        this.index = 7;
-        this.multiply = 0;
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -31,6 +29,20 @@ class Bomb {
     }
 
     boom() {
-        console.log("hello");    
+        var norVandak = Math.floor(this.yntrelVandak(1));
+        
+        if (norVandak >= 2) {
+            matrix[norVandak[1]][norVandak[0]] = 7;
+            matrix[this.y][this.x] = 0;
+            this.x = norVandak[0];
+            this.y = norVandak[1];
+
+            for (var j in grassArr) {
+                if (norVandak[0] == grassArr[j].x && norVandak[1] == grassArr[j].y) {
+                    grassArr.splice(j, 1);
+                    break;
+                }
+            }
+        }
     }
 }

@@ -38,8 +38,7 @@ class Mard extends KendaniEak{
         return found;
     }
 
-
-    sharjvel_utel_mahanal() {
+    sharjvel_utel() {
         var find = random(this.yntrelVandak(2, 3, 4));
         var chooseSquare = random(this.yntrelVandak(0, 1));
         this.multiply++;
@@ -88,6 +87,7 @@ class Mard extends KendaniEak{
             this.multiply = 0;
 
         }
+
     }
 
 }

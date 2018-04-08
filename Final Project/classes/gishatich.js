@@ -61,6 +61,27 @@ class Gishatich extends KendaniEak{
                     break;
                 }
             }
+
+            for (var j in mardArr) {
+                if (norVandak[0] == mardArr[j].x && norVandak[1] == mardArr[j].y) {
+                    mardArr.splice(j, 1);
+                    break;
+                }
+            }
+
+            for (var j in shunArr) {
+                if (norVandak[0] == shunArr[j].x && norVandak[1] == shunArr[j].y) {
+                    shunArr.splice(j, 1);
+                    break;
+                }
+            }
+
+            for (var j in gishatichArr) {
+                if (norVandak[0] == gishatichArr[j].x && norVandak[1] == gishatichArr[j].y) {
+                    gishatichArr.splice(j, 1);
+                    break;
+                }
+            }
         }
     }
 
@@ -73,6 +94,29 @@ class Gishatich extends KendaniEak{
                     break;
                 }
             }
+        }
+    }
+
+    bazmanal () {
+
+        this.index = 3.5;
+
+        if (this.index % 2 == 0)  {
+            this.index = "igakan"
+        }
+
+        this.multiply++;
+        var emptyCells = this.yntrelVandak(0);
+        var newCell = random(emptyCells);
+ 
+        if(newCell && this.multiply >= 8){
+            var newX = newCell[0];
+            var newY = newCell[1];
+            matrix[newY][newX] = this.index;
+ 
+            var newGishatich = new Gishatich(newX, newY, this.index);
+            gishatichArr.push(newGishatich);
+            this.multiply = 0;
         }
     }
 

@@ -2,7 +2,7 @@ class Amenaker extends KendaniEak{
     constructor(x, y, index) {
         super(x, y);
         this.multiply = 0;
-        this.energy = 20;
+        this.energy = 10;
         this.speed = Math.round(random(0, 2));
         this.speed2 = this.speed += 1;
         this.index = 6;
@@ -39,66 +39,70 @@ class Amenaker extends KendaniEak{
         return found;
     }
 
+    sharjvel() {
 
-    sharjvel_utel_mahanal() {
-        console.log("HI");
-        /*var find = random(this.yntrelVandak(2, 3, 4));
-        var chooseSquare = random(this.yntrelVandak(0, 1));
-        this.multiply++;
-        if (find) {
-            if (this.multiply >= this.speed2) {
-                this.energy++;
-                if (matrix[find[1]][find[0]] = 2) {
-                    for (var i in xotakerArr) {
-                        if (find[0] == xotakerArr[i].x && find[1] == xotakerArr[i].y) {
-                            xotakerArr.splice(i, 1);
-                            break;
-                        }
-                    }
-                }
-                else if (matrix[find[1]][find[0]] = 3) {
-                    for (var j in gishatichArr) {
-                        if (find[0] == gishatichArr[j].x && find[1] == gishatichArr[j].y) {
-                            gishatichArr.splice(j, 1);
-                            break;
-                        }
-                    }
-                }
-                else if (matrix[find[1]][find[0]] = 4) {
-                    for (var k in shunArr) {
-                        if (find[0] == shunArr[k].x && find[1] == shunArr[k].y) {
-                            shunArr.splice(k, 1);
-                            break;
-                        }
-                    }
-                }
+        var norVandak = random(this.yntrelVandak(0));
 
-                else if (matrix[find[1]][find[0]] = 5) {
-                    for (var k in mardArr) {
-                        if (find[0] == mardArr[k].x && find[1] == mardArr[k].y) {
-                            mardArr.splice(k, 1);
-                            break;
-                        }
-                    }
+        if (norVandak) {
+            matrix[this.y][this.x] = 0;
+
+            this.x = norVandak[0];
+            this.y = norVandak[1];
+
+            matrix[this.y][this.x] = 6;
+
+        }
+
+    }
+
+    utel() {
+        var norVandak = random(this.yntrelVandak(1));
+
+        if (norVandak >= 2) {
+
+            matrix[norVandak[1]][norVandak[0]] = 2;
+            matrix[this.y][this.x] = 0;
+            this.x = norVandak[0];
+            this.y = norVandak[1];
+            this.energy++;
+
+            for (var j in xotakerArr) {
+                if (norVandak[0] == xotakerArr[j].x && norVandak[1] == xotakerArr[j].y) {
+                    xotakerArr.splice(j, 1);
+                    break;
                 }
-
-                matrix[find[1]][find[0]] = 5;
-                matrix[this.y][this.x] = 0;
-                this.x = find[0];
-                this.y = find[1];
-                this.multiply = 0;
-
+            }
+            
+            for (var j in gishatichArr) {
+                if (norVandak[0] == gishatichArr[j].x && norVandak[1] == gishatichArr[j].y) {
+                    gishatichArr.splice(j, 1);
+                    break;
+                }
             }
         }
-        else if (chooseSquare && this.multiply >= this.speed) {
-            this.energy--;
-            matrix[chooseSquare[1]][chooseSquare[0]] = 5;
-            matrix[this.y][this.x] = 0;
-            this.x = chooseSquare[0];
-            this.y = chooseSquare[1];
-            this.multiply = 0;
+    }
 
-        }*/
+    bazmanal () {
+
+        this.index = 6.5;
+
+        if (this.index % 2 == 0)  {
+            this.index = "igakan"
+        }
+        
+        this.multiply++;
+        var emptyCells = this.yntrelVandak(0);
+        var newCell = random(emptyCells);
+ 
+        if(newCell && this.multiply >= 8){
+            var newX = newCell[0];
+            var newY = newCell[1];
+            matrix[newY][newX] = this.index;
+ 
+            var newAmenaker = new Amenaker(newX, newY, this.index);
+            amenakerArr.push(newAmenaker);
+            this.multiply = 0;
+        }
     }
 
 }

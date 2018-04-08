@@ -2,7 +2,7 @@ class Xotaker extends KendaniEak{
     constructor(x, y, index) {
         super(x, y, index);
         this.energy = 8;
-        this.multiply = 1;
+        this.multiply = 0;
         this.directions = [
             [this.x - 1, this.y - 1],
             [this.x, this.y - 1],
@@ -78,6 +78,29 @@ class Xotaker extends KendaniEak{
                     break;
                 }
             }
+        }
+    }
+
+    bazmanal () {
+
+        this.index = 2.5;
+
+        if (this.index % 2 == 0)  {
+            this.index = "igakan"
+        }
+
+        this.multiply++;
+        var emptyCells = this.yntrelVandak(0);
+        var newCell = random(emptyCells);
+ 
+        if(newCell && this.multiply >= 8){
+            var newX = newCell[0];
+            var newY = newCell[1];
+            matrix[newY][newX] = this.index;
+ 
+            var newXotaker = new Xotaker(newX, newY, this.index);
+            xotakerArr.push(newXotaker);
+            this.multiply = 0;
         }
     }
 
